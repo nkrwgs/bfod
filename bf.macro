@@ -1,0 +1,56 @@
+# acdefgilmpqrst
+# p: pointer
+# m: memory
+# t: program text
+# q: program counter
+# a: addition
+# s: substance
+# c: put char
+# g: get char
+# l: left
+# r: right
+# j: jump
+# b: return
+# e: eval command
+# f: fill text
+# g: 
+# x: start script
+# initial
+0sp
+0sq
+# addition
+# (x) lax : x + *p -> *p
+[lp;m+lp:m]sa
+# substruct
+# (x) lsx : *p - x -> *p
+[lp;mr-lp:m]ss
+# putchar *ptr
+# lcx
+[lp;mP]sc
+# getchar 
+[?]sg
+#
+# right
+# lrx
+[lp+sp]sr
+# left
+# llx
+[lpr-sp]sl
+# jump
+# (x) ljx : if *p == 0 then jump
+[0lp;m=k]sj
+[lq+sq]sk
+# return 
+# lbx 
+[lqr-1-sq]sb
+# e: eval command
+[lq;txlq1+sqlex]se
+# f: push command
+[=h]sf
+[:tlfx]sh
+# x: start script
+[lfxlexq]sx
+# z: seek system
+[lpp;mps.lqps.]sz
+# y: step by step
+[lq;tpxlq1+sq]sy
